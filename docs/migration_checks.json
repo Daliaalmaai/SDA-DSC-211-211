@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "notebook": "01_baseline_boosting.ipynb",
+      "code_cells": 10,
+      "saved_error_outputs": 0
+    },
+    {
+      "notebook": "02_validation_tuning.ipynb",
+      "code_cells": 10,
+      "saved_error_outputs": 0
+    }
+  ],
+  "omitted_template_workflows": [
+    "bilingual_content_check.yml",
+    "build_bilingual_day1.yml",
+    "build_bilingual_day2.yml",
+    "build_bilingual_day3.yml",
+    "build_bilingual_day4.yml",
+    "build_bilingual_day5.yml",
+    "build_bilingual_final_check.yml",
+    "build_bilingual_readiness.yml",
+    "day1_reference_parity.yml",
+    "day2_reference_parity.yml",
+    "day3_reference_parity.yml",
+    "day4_reference_parity.yml",
+    "day5_reference_parity.yml",
+    "final_check_notebook.yml",
+    "final_project.yml",
+    "link_check.yml",
+    "notebook_smoke.yml",
+    "release_candidate.yml"
+  ],
+  "remote_created": true,
+  "day3_imported": false,
+  "full_ci_run": false,
+  "remote_url": "https://github.com/Daliaalmaai/tamweel-lite-daliaalmaai"
+}
