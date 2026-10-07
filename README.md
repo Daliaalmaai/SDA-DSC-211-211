@@ -8,7 +8,7 @@ available at application time.
 
 **Course:** SDA-DSC-211 — Advanced Machine Learning Methods  
 **Project type:** Individual learner project  
-**Current stage:** Days 1–2 completed; Day 3 planned  
+**Current stage:** Days 1–3 executed and evidence saved; Days 4–5 pending  
 **Day 1 initial candidate:** XGBoost, provisional; Day 2 evaluates LightGBM protocols
 
 > This project uses synthetic course data. It must not be used to make
@@ -25,12 +25,14 @@ available at application time.
 - [Day 2 notebook | دفتر اليوم الثاني](notebooks/02_validation_tuning.ipynb)
 - [Day 2 results | نتائج اليوم الثاني](artifacts/validation_summary.csv)
 - [Day 2 reflection | تفسير اليوم الثاني](artifacts/day2_reflection.json)
+- [Day 3 notebook | دفتر اليوم الثالث](notebooks/03_cost_sensitive_decision.ipynb)
+- [Decision Card | بطاقة القرار](reports/DECISION_CARD.md)
 - [Project progress | تقدم المشروع](#project-progress)
 
 <!-- BILINGUAL:AR -->
 
 مشروع تعليمي لتقدير احتمال التعثر خلال 90 يومًا باستخدام معلومات وقت تقديم الطلب.
-اكتمل اليوم الأول والثاني، وبقية الأيام مخططة. البيانات اصطناعية والنتائج لا تصلح
+اكتملت دفاتر وأدلة الأيام الثلاثة الأولى، واليومان الرابع والخامس لم يكتملَا بعد. البيانات اصطناعية والنتائج لا تصلح
 لاتخاذ قرارات تمويل حقيقية. تُحفظ دفاتر الأيام وأدلتها في مستودع واحد، ثم يُنتج
 النموذج وواجهة التنبؤ النهائية في اليوم الخامس.
 
@@ -53,7 +55,7 @@ using evidence rather than model complexity or reputation.
 | Readiness | Environment and data checks | Completed |
 | Day 1 | Baseline and boosting comparison | Completed |
 | Day 2 | Customer-aware and time-aware validation; tuning | Completed |
-| Day 3 | Class imbalance and decision costs | Planned |
+| Day 3 | Class imbalance and decision costs | Executed; evidence and Decision Card saved |
 | Day 4 | Interpretation and calibration | Planned |
 | Day 5 | Ensembles, Model Card, and final delivery | Planned |
 
@@ -331,7 +333,7 @@ cooperative search budget. FULL mode is optional. No paid service or Drive mount
 is required. This run used live search, not precomputed recovery results.
 
 `environment.json` is the latest exported environment record and is updated
-by Day 2; day-specific configurations remain in each day's run metadata.
+by Day 3; day-specific configurations remain in each day's run metadata.
 Course data revision: `fe0c0204e6076a7ac2139b7336485a097343fb8a`.
 Day 2 support revision: `1e1da4acbee8941bef07245b259fb6c27ced4ad7`.
 These course-tool revisions are not the learner's final submission commit SHA.
@@ -357,12 +359,55 @@ These course-tool revisions are not the learner's final submission commit SHA.
 | Comparison figure | [day2_validation_comparison.png](artifacts/day2_validation_comparison.png) |
 | Latest environment record | [environment.json](artifacts/environment.json) |
 
+## Day 3 — Class Imbalance and Decision Costs | اليوم الثالث
+
+The live CPU run compares unweighted, weighted and oversampled LightGBM on
+5,039 pooled OOF applications. Weighted modeling was the declared strategy
+for threshold selection. False-negative cost is 10 educational units,
+false-positive cost is 1, and flags must stay within 12% of each period.
+
+| Rule | Threshold | Flags | Recall | Precision | Loss units | Capacity feasible |
+|---|---:|---:|---:|---:|---:|---|
+| Default | 0.5000 | 1,005 | 0.5781 | 0.2209 | 2,403 | No |
+| Minimum loss without capacity limit | 0.4486 | 1,141 | 0.6406 | 0.2156 | 2,275 | No |
+| Minimum loss within every-period capacity | 0.6583 | 526 | 0.4089 | 0.2985 | 2,639 | Yes |
+
+The exact saved rule is `score >= 0.6583471436014694`. It flags 137, 183 and
+206 applications against period capacities of 195, 200 and 207. Meeting
+capacity costs 236 more educational loss units than the default threshold
+and reduces recall. These are simulated development results, not a final test.
+Predicting no flags achieves 92.38% accuracy but misses all 384 defaults.
+
+Regional FPR ranges from approximately 7.64% to 8.29%, a gap of 0.6484
+percentage points. This descriptive audit does not establish fairness.
+OOF coverage is 50.39% of all training rows and 100% of eligible rows.
+Weighted scores are not established as calibrated probabilities; costs are
+simplified, and future review capacity and outcomes may differ.
+
+اكتمل تشغيل اليوم الثالث وحفظ نتائجه وبطاقة القرار. اختيرت عتبة تقارب
+0.6583 لتلبية حد المراجعة البالغ 12% في كل فترة. تُرسل 526 حالة للمراجعة،
+مع انخفاض استرجاع حالات التعثر وزيادة الخسارة التعليمية مقارنة بعتبة 0.5.
+النتائج مبنية على بيانات اصطناعية وتنبؤات OOF للتطوير؛ لا تمثل اختبارًا
+نهائيًا أو دليلًا على العدالة أو معايرة الاحتمالات.
+
+- [Executed notebook](notebooks/03_cost_sensitive_decision.ipynb)
+- [Decision Card](reports/DECISION_CARD.md)
+- [Model comparison](artifacts/day3_model_comparison.csv)
+- [Exact threshold and policy](artifacts/threshold_metrics.json)
+- [Period capacity](artifacts/day3_period_capacity.csv)
+- [Regional audit](artifacts/day3_region_audit.csv)
+- [Cost sensitivity](artifacts/day3_cost_sensitivity.csv)
+- [Written reflection](artifacts/day3_reflection.json)
+- [Run metadata](artifacts/day3_run.json)
+
+![Day 3 cost and capacity](artifacts/cost_curve.png)
+
 ## Remaining Work and Final Submission
 
-Days 3–5 will add decision policy, interpretation, calibration and the final
-integrated model/inference interface. The Decision Card, Interpretability Report,
-Ensemble Decision, Model Card and five-slide PDF must be completed from live
-evidence. Final readiness requires clean notebook execution and Notebook 99
+Days 4–5 will add interpretation, calibration and the final integrated
+model/inference interface. The Day 3 Decision Card has been saved. The
+Interpretability Report, Ensemble Decision, Model Card and five-slide PDF
+remain to be completed from live evidence. Final readiness requires clean notebook execution and Notebook 99
 checks, consistent files/manifest, an exact final commit and immutable tag,
 and private submission through the cohort's approved channel. Daily readiness
 messages are not final grades or submission receipts.
@@ -424,4 +469,4 @@ This independent repository preserves the course folder structure and credits th
 <!-- BILINGUAL:AR -->
 هذا مستودع مستقل للمتدربة يحافظ على بنية مجلدات الدورة ويوثق مصدر الأكواد المعاد استخدامها. أُنشئ بناءً على توجيه الأستاذة الذي نقلته المتدربة. يبقى المستودع السابق سجلًا للمراحل الماضية. فحوص توليد إصدارات القالب ومطابقة الإجابات الفارغة لا تُشغّل بوصفها فحوص تقييم لهذا المستودع. تبقى فحوص البيئة والاختبارات والروابط والتوثيق باللغتين وأدوات فحص التسليم النهائي متاحة.
 
-**Current status:** Day 1 and Day 2 executed notebooks and evidence have been retained. The executed Day 3 notebook, its 17 artifacts and Decision Card must still be imported from Colab. Days 4–5 and final delivery are not complete. Passing a workflow is not a grade or final-readiness certification.
+**Current status:** Executed notebooks and evidence for Days 1–3 are saved, including the Day 3 artifacts and Decision Card. Days 4–5 and final delivery are not complete. Passing a workflow is not a grade or final-readiness certification.
