@@ -3,8 +3,6 @@
 
 **Student:** Daliaalmaai · **Student code:** 211
 
-**Academy:** [@SDAIAAcademy](https://github.com/SDAIAAcademy)
-
 ## Assessment entry point | ملف الأكواد الجامع
 
 [FINAL_CODE_NOTEBOOK.ipynb](FINAL_CODE_NOTEBOOK.ipynb) assembles readiness, Days 1–5 and the final technical check. The separate daily notebooks retain their individual results. Use a fresh free CPU Colab session and **Runtime → Run all**; download the executed `.ipynb` and upload it manually. No Drive mount or GitHub authorization is required.
@@ -646,3 +644,9 @@ The notebook and supporting code originate from the course template.
 The results shown here come from the executed Colab notebooks saved in this repository.
 
 See [AUTHORS.md](AUTHORS.md) for project attribution and assistance.
+
+## Training-program attribution
+
+This project was completed for **SDA-DSC-211 — Advanced Machine Learning Methods** as part of the **SDAIA Academy** training program. Tamweel Lite brings together the practical work from the five course labs.
+
+Training-program reference: [SDAIA Academy on GitHub](https://github.com/SDAIAAcademy).
