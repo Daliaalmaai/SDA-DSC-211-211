@@ -3,6 +3,8 @@
 
 **Student:** Daliaalmaai · **Student code:** 211
 
+**Academy:** [@SDAIAAcademy](https://github.com/SDAIAAcademy)
+
 ## Assessment entry point | ملف الأكواد الجامع
 
 [FINAL_CODE_NOTEBOOK.ipynb](FINAL_CODE_NOTEBOOK.ipynb) assembles readiness, Days 1–5 and the final technical check. The separate daily notebooks retain their individual results. Use a fresh free CPU Colab session and **Runtime → Run all**; download the executed `.ipynb` and upload it manually. No Drive mount or GitHub authorization is required.
