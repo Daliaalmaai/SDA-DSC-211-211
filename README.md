@@ -8,7 +8,7 @@ available at application time.
 
 **Course:** SDA-DSC-211 — Advanced Machine Learning Methods  
 **Project type:** Individual learner project  
-**Current stage:** Days 1–4 executed and evidence saved; Day 5 pending  
+**Current stage:** Days 1–5 executed and evidence saved; official Notebook 99 final preflight passed  
 **Day 1 initial candidate:** XGBoost, provisional; Day 2 evaluates LightGBM protocols
 
 > This project uses synthetic course data. It must not be used to make
@@ -34,7 +34,7 @@ available at application time.
 <!-- BILINGUAL:AR -->
 
 مشروع تعليمي لتقدير احتمال التعثر خلال 90 يومًا باستخدام معلومات وقت تقديم الطلب.
-اكتملت دفاتر وأدلة الأيام الأربعة الأولى؛ بقي اليوم الخامس والتسليم النهائي. نتيجة اليوم الرابع تحتاج مراجعة السعة. البيانات اصطناعية والنتائج لا تصلح
+اكتملت دفاتر وأدلة الأيام الخمسة، والنموذج النهائي وملف التنبؤات والعرض. الفحص النهائي قيد التنفيذ. نتيجة اليوم الرابع تحتاج مراجعة السعة. البيانات اصطناعية والنتائج لا تصلح
 لاتخاذ قرارات تمويل حقيقية. تُحفظ دفاتر الأيام وأدلتها في مستودع واحد، ثم يُنتج
 النموذج وواجهة التنبؤ النهائية في اليوم الخامس.
 
@@ -59,7 +59,7 @@ using evidence rather than model complexity or reputation.
 | Day 2 | Customer-aware and time-aware validation; tuning | Completed |
 | Day 3 | Class imbalance and decision costs | Executed; evidence and Decision Card saved |
 | Day 4 | Interpretation and calibration | Executed LIVE; report saved; capacity review required |
-| Day 5 | Ensembles, Model Card, and final delivery | Planned |
+| Day 5 | Ensembles, Model Card, and final delivery | Live outputs saved; Notebook 99 final preflight passed |
 
 ## Dataset and Prediction Task
 
@@ -521,12 +521,54 @@ save the executed notebook. Support revision: `4f6892d5c02923b5f8e3c78f4fcead73b
 
 ## Remaining Work and Final Submission
 
-Day 5 will add the final integrated model/inference interface. The Day 3
-Decision Card and Day 4 Interpretability Report are saved. The Ensemble Decision,
-Model Card and five-slide PDF remain to be completed from live evidence. Final readiness requires clean notebook execution and Notebook 99
+Day 5 produced the final Logistic Regression model, inference interface, frozen policy, model card, ensemble decision, challenge predictions and five-slide PDF from live evidence. Final readiness requires clean notebook execution and Notebook 99
 checks, consistent files/manifest, an exact final commit and immutable tag,
 and private submission through the cohort's approved channel. Daily readiness
 messages are not final grades or submission receipts.
+
+
+## Day 5 — Final model and delivery | اليوم الخامس
+
+<!-- BILINGUAL:EN -->
+The live nested-forward comparison chose **KEEP SINGLE: Logistic Regression**. The fit/selection pool contains 6,576 rows, with 836 calibration-only rows (78 positives). All six candidates share 2,155 outer OOF requests. Inner OOF alone learns ensemble weights and stacking coefficients, with customer separation and mature 90-day labels.
+
+| Candidate | Mean AP | Fold SD | Mean Brier | Mean ECE |
+|---|---:|---:|---:|---:|
+| LightGBM | 0.34549 | 0.04348 | 0.06608 | 0.02311 |
+| XGBoost | 0.35263 | 0.02904 | 0.06566 | 0.02276 |
+| Logistic | **0.39166** | 0.02981 | 0.06327 | 0.01882 |
+| Equal average | 0.37170 | 0.03258 | 0.06435 | 0.02038 |
+| Weighted average | 0.38942 | 0.02906 | 0.06332 | 0.01772 |
+| Stack | 0.38314 | 0.02949 | 0.06603 | 0.03106 |
+
+No ensemble gained AP over Logistic or passed the fixed worth-it gate. Fold SD describes three dependent periods and is not a confidence interval. OOF is development selection evidence, not an untouched final test.
+
+The raw OOF threshold **0.16892161427109176** flags 245/2,155 requests, with 84 TP, 161 FP and 95 FN. Educational loss is **1,111** under 10 FN + FP. Every period stays within 12% capacity (maximum 11.749%). Regional FPR ranges from 32/507 (eastern, 6.31%) to 50/486 (western, 10.29%), a descriptive gap of 3.976 percentage points without intervals or fairness certification.
+
+The frozen sigmoid mapping transports the threshold to **0.12225843144286948**. Calibration-fit Brier worsened from 0.076473 to 0.078058 and ECE from 0.021121 to 0.034871. These are fit diagnostics on the calibrator's own rows; improvement is not claimed. Day 4 SHAP belongs to the earlier weighted LightGBM model and does not explain this final Logistic model.
+
+All **2,500** challenge IDs appear once, in input order. One full-batch cap reduces **330** threshold candidates to **300** simulated review flags, removing 30. Equal-score blocks remain intact. Challenge labels are unavailable, so challenge AP, loss and FPR are not claimed. Saved-model replay matched probabilities within 1e-12 and decisions exactly.
+
+<!-- BILINGUAL:AR -->
+اختارت المقارنة الحية Logistic Regression مفرداً بمتوسط AP=0.39166؛ لم يجتز أي تجميع بوابة الجدوى. حوض التدريب والاختيار 6576 طلباً، وعينة المعايرة 836، والمقارنة على 2155 طلب OOF مع فصل العملاء ونضج الهدف. العتبة الخام 0.16892161427109176 أعطت 245 إشارة وخسارة تعليمية 1111 ضمن السعة بكل فترة. المعايرة ساءت في Brier وECE، ومقاييسها تشخيصات على بيانات تعلم المعاير. لا ننسب SHAP اليوم الرابع إلى Logistic النهائي. صُدرت 2500 حالة تحدٍّ، وخُفضت الإشارات من 330 إلى 300 بسقف 12% مرة واحدة؛ غياب التسميات يمنع ادعاء أداء التحدي أو عدالته.
+
+- [Executed Day 5 notebook](notebooks/05_final_model.ipynb)
+- [Model Card](reports/MODEL_CARD.md) and [Ensemble Decision](reports/ENSEMBLE_DECISION.md)
+- [Final metrics](artifacts/final_metrics.json), [frozen policy](artifacts/final_policy.json) and [model manifest](artifacts/final_model/model_manifest.json)
+- [Challenge submission](submission/submission.csv) and [five-slide presentation](presentation/final_presentation.pdf)
+- [Earlier evidence](evidence/) and [Day 5 project bundle](submission/project_bundle.zip)
+
+![Live ensemble comparison](artifacts/day5_ensemble_comparison.png)
+![Challenge batch capacity](artifacts/day5_challenge_capacity.png)
+
+Reproduce saved predictions on the complete batch:
+
+```bash
+python scripts/replay_final.py
+python scripts/rebuild_final.py
+```
+
+Codex assisted with execution, verification, interpretation drafting and the presentation. The learner must review and be able to defend the reasoning. Technical checks do not award a grade or acknowledge private submission.
 
 ## Repository Structure
 
@@ -585,4 +627,11 @@ This independent repository preserves the course folder structure and credits th
 <!-- BILINGUAL:AR -->
 هذا مستودع مستقل للمتدربة يحافظ على بنية مجلدات الدورة ويوثق مصدر الأكواد المعاد استخدامها. أُنشئ بناءً على توجيه الأستاذة الذي نقلته المتدربة. يبقى المستودع السابق سجلًا للمراحل الماضية. فحوص توليد إصدارات القالب ومطابقة الإجابات الفارغة لا تُشغّل بوصفها فحوص تقييم لهذا المستودع. تبقى فحوص البيئة والاختبارات والروابط والتوثيق باللغتين وأدوات فحص التسليم النهائي متاحة.
 
-**Current status:** Executed notebooks and evidence for Days 1–4 are saved, including the Decision Card and Interpretability Report. Day 4 capacity review remains required. Day 5 and final delivery are not complete. Passing a workflow is not a grade or final-readiness certification.
+**Current status:** Executed notebooks and evidence for Days 1–5 are saved, including the Decision Card and Interpretability Report. Day 4 capacity review remains required. Day 5 live outputs are complete; official Notebook 99 final preflight passed all 100 checks; private submission remains pending. Passing a workflow is not a grade or final-readiness certification.
+
+
+<!-- BILINGUAL:EN -->
+The official Notebook 99 final assessment passed all 100 checks, including fresh isolated CPU execution of readiness and Days 1–5. The repository also provides a manually triggered **Final Project Check** workflow for the final commit. Technical readiness does not certify the written interpretation or award a grade. Review the AI-assisted reflections and presentation before private submission.
+
+<!-- BILINGUAL:AR -->
+نجح الفحص الرسمي في دفتر 99 في جميع الفحوص المئة، بما فيها إعادة تشغيل الاستعداد والأيام 1–5 في بيئات CPU مستقلة. يتوفر أيضًا فحص Final Project Check يدويًا على النسخة النهائية من المستودع. الجاهزية التقنية لا تثبت صحة التفسير ولا تمنح درجة؛ راجعي الإجابات والعرض المعدّين بمساعدة الذكاء الاصطناعي قبل التسليم الخاص.
