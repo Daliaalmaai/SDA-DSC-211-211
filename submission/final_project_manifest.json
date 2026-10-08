@@ -1011,8 +1011,8 @@
       "sha256": "8bf9fbb192b072a7b1e5d8dd158c418e6a8a3f75a53bedcb69fbb88cdc518362"
     },
     "README.md": {
-      "bytes": 37437,
-      "sha256": "f1e9b7329aeef999830c84e327658eb759f459bbd0bab20f0c6a9369c7106d7a"
+      "bytes": 37777,
+      "sha256": "57934daf798497ba6643e358b4c83f5402c43b9854d78590ba325fd23b603e7c"
     },
     "release/RELEASE_FREEZE_STATUS.md": {
       "bytes": 2693,
@@ -1327,7 +1327,7 @@
       "sha256": "ea3e6d0c41ef14f34e43b713b15b74f859833e469d649e0a1e3567e5e8e50ed9"
     }
   },
-  "content_sha256": "4534fa4505f958246f0582000c9436cbb5ceaa4fbf6f514d2839e834d79defc8",
+  "content_sha256": "d1358abf312892c765e521eea83b0909cc1d26816de2099b7873dc1b40073543",
   "seed": 211,
   "environment": {
     "python": "3.13.16",
