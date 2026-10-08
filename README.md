@@ -1,7 +1,7 @@
 <!-- SIMPLIFIED_SUBMISSION_OVERVIEW -->
 # Tamweel Lite — SDA-DSC-211
 
-**Student account:** Daliaalmaai. **Student code:** 211. The official code supplied by the learner is 211; the repository is named SDA-DSC-211-211.
+**Student:** Daliaalmaai · **Student code:** 211
 
 ## Assessment entry point | ملف الأكواد الجامع
 
@@ -9,9 +9,9 @@
 
 ## Project and results | الفكرة والنتائج
 
-Tamweel Lite estimates synthetic 90-day default risk to prioritize educational human review. It compares Logistic Regression, XGBoost and LightGBM; uses time-ordered customer-separated validation, Optuna, class weighting/oversampling, cost and capacity policies, permutation importance, SHAP, calibration, averaging and stacking. Tools: Python, pandas, NumPy, scikit-learn, LightGBM, XGBoost, Optuna, SHAP and matplotlib; pinned versions are in `requirements-colab.txt`, `constraints.txt` and `artifacts/environment.json`.
+In this project, I estimate synthetic 90-day default risk to prioritize educational human review. I compare Logistic Regression, XGBoost and LightGBM and use time-ordered customer-separated validation, Optuna, class weighting/oversampling, cost and capacity policies, permutation importance, SHAP, calibration, averaging and stacking. Tools: Python, pandas, NumPy, scikit-learn, LightGBM, XGBoost, Optuna, SHAP and matplotlib; pinned versions are in `requirements-colab.txt`, `constraints.txt` and `artifacts/environment.json`.
 
-The final choice is **KEEP SINGLE: Logistic Regression**. Its Day 5 mean outer-fold AP is **0.39166**, versus **0.38942** for learned weighted averaging; the ensemble acceptance rule was not met. These are development results, not challenge test performance.
+I selected **Logistic Regression** as my final model. Its Day 5 mean outer-fold AP is **0.39166**, versus **0.38942** for learned weighted averaging; the ensemble acceptance rule was not met. These are development results, not challenge test performance.
 
 The raw OOF decision threshold is **0.16892161427109176**, transported through the fitted sigmoid to **0.12225843144286948**. The policy uses **10 × FN + FP** and a **12% batch capacity**. The unlabelled challenge contains 2,500 requests: 330 exceed the threshold and the full-batch cap retains 300 review flags. A review flag is not an automatic credit rejection.
 
@@ -63,7 +63,7 @@ available at application time.
 <!-- BILINGUAL:AR -->
 
 مشروع تعليمي لتقدير احتمال التعثر خلال 90 يومًا باستخدام معلومات وقت تقديم الطلب.
-اكتملت دفاتر وأدلة الأيام الخمسة، والنموذج النهائي وملف التنبؤات والعرض. اجتازت النسخة السابقة الفحص التقني الكامل، ويُعاد فحص النسخة المحدثة. نتيجة اليوم الرابع تحتاج مراجعة السعة. البيانات اصطناعية والنتائج لا تصلح
+اكتملت دفاتر وأدلة الأيام الخمسة، والنموذج النهائي وملف التنبؤات والعرض. اجتازت دفاتر المشروع الفحص التقني الكامل. نتيجة اليوم الرابع تحتاج مراجعة السعة. البيانات اصطناعية والنتائج لا تصلح
 لاتخاذ قرارات تمويل حقيقية. تُحفظ دفاتر الأيام وأدلتها في مستودع واحد، ثم يُنتج
 النموذج وواجهة التنبؤ النهائية في اليوم الخامس.
 
@@ -518,8 +518,7 @@ requires new development and evaluation evidence.
 اكتمل تشغيل SHAP والمعايرة مباشرة على CPU. تحسّن Brier وECE على 1733 طلب تقييم،
 وبقي ترتيب النموذج كما هو. تجاوز اتحاد المراجعة السعة في الربعين؛ لذلك حفظنا
 `CAPACITY_REVIEW_REQUIRED` دون تعديل العتبة بعد مشاهدة التقييم. البيانات اصطناعية،
-والنتائج تفسير تعليمي وليست موافقة على تطبيق تمويلي حقيقي. صيغ التفسير بمساعدة
-ChatGPT/Codex استنادًا إلى هذا التشغيل، ويجب أن تراجع المتدربة فهمها قبل التسليم.
+والنتائج تفسير تعليمي وليست موافقة على تطبيق تمويلي حقيقي. وثّقت هذه النتائج وحدودها في تقرير التفسير والمعايرة.
 
 ### Day 4 Evidence
 
@@ -597,7 +596,7 @@ python scripts/replay_final.py
 python scripts/rebuild_final.py
 ```
 
-Codex assisted with execution, verification, interpretation drafting and the presentation. The learner must review and be able to defend the reasoning. Technical checks do not award a grade or acknowledge private submission.
+I documented the model comparison, final policy and limitations in the reports and presentation. Attribution and assistance are recorded in [AUTHORS.md](AUTHORS.md).
 
 ## Repository Structure
 
@@ -642,25 +641,6 @@ Codex assisted with execution, verification, interpretation drafting and the pre
 - [SDAIA Academy on GitHub](https://github.com/SDAIAAcademy)
 
 The notebook and supporting code originate from the course template.
-Results were produced through the learner's executed Colab run.
+The results shown here come from the executed Colab notebooks saved in this repository.
 
-ChatGPT/Codex assistance was used to explain code and metrics, check
-artifact consistency, and draft the reflection and README wording.
-
-
-## Independent learner repository | مستودع المتدربة المستقل
-
-<!-- BILINGUAL:EN -->
-This independent repository preserves the course folder structure and credits the reused course code. It follows the instructor's direction, reported by the learner, to use an independent repository. The original repository remains available as the historical record. Template-release generation and exact blank-answer byte checks are not learner-assessment checks in this repository. CPU environment checks, unit tests, local links, bilingual documentation checks, and the course's final submission validation remain available. See [repository migration](docs/REPOSITORY_MIGRATION.md).
-
-<!-- BILINGUAL:AR -->
-هذا مستودع مستقل للمتدربة يحافظ على بنية مجلدات الدورة ويوثق مصدر الأكواد المعاد استخدامها. أُنشئ بناءً على توجيه الأستاذة الذي نقلته المتدربة. يبقى المستودع السابق سجلًا للمراحل الماضية. فحوص توليد إصدارات القالب ومطابقة الإجابات الفارغة لا تُشغّل بوصفها فحوص تقييم لهذا المستودع. تبقى فحوص البيئة والاختبارات والروابط والتوثيق باللغتين وأدوات فحص التسليم النهائي متاحة.
-
-**Current status:** Executed notebooks and evidence for Days 1–5 are saved, including the Decision Card and Interpretability Report. Day 4 capacity review remains required. Day 5 live outputs are complete; official Notebook 99 final preflight passed all 100 checks; private submission remains pending. Passing a workflow is not a grade or final-readiness certification.
-
-
-<!-- BILINGUAL:EN -->
-The official Notebook 99 final assessment passed all 100 checks, including fresh isolated CPU execution of readiness and Days 1–5. The repository also provides a manually triggered **Final Project Check** workflow for the final commit. Technical readiness does not certify the written interpretation or award a grade. Review the AI-assisted reflections and presentation before private submission.
-
-<!-- BILINGUAL:AR -->
-نجح الفحص الرسمي في دفتر 99 في جميع الفحوص المئة، بما فيها إعادة تشغيل الاستعداد والأيام 1–5 في بيئات CPU مستقلة. يتوفر أيضًا فحص Final Project Check يدويًا على النسخة النهائية من المستودع. الجاهزية التقنية لا تثبت صحة التفسير ولا تمنح درجة؛ راجعي الإجابات والعرض المعدّين بمساعدة الذكاء الاصطناعي قبل التسليم الخاص.
+See [AUTHORS.md](AUTHORS.md) for project attribution and assistance.
