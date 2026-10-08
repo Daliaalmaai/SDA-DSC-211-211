@@ -982,9 +982,13 @@
       "bytes": 38392,
       "sha256": "55c57543438d458435bf01a38be7c155aff223ef7caea045b0247613e29568f7"
     },
+    "notebooks/FINAL_CODE_NOTEBOOK.ipynb": {
+      "bytes": 2986574,
+      "sha256": "c815147ed8c7eb54704251936d11e4caa32506e380c34f077a8babe173ad184a"
+    },
     "notebooks/README.md": {
-      "bytes": 2689,
-      "sha256": "0d44ec35a496ca9147cb538c8c599d4754455c9f6c595eb4e53340ba891c29dc"
+      "bytes": 2578,
+      "sha256": "2c9e14c7886b8112221530e7357595452a906953a81c0070686d81be65fe54ed"
     },
     "NOTICE.md": {
       "bytes": 1088,
@@ -1011,8 +1015,8 @@
       "sha256": "8bf9fbb192b072a7b1e5d8dd158c418e6a8a3f75a53bedcb69fbb88cdc518362"
     },
     "README.md": {
-      "bytes": 37777,
-      "sha256": "57934daf798497ba6643e358b4c83f5402c43b9854d78590ba325fd23b603e7c"
+      "bytes": 41824,
+      "sha256": "46fbcba2477427fcdf761d54845e2795bcae930be1da37ad6054a32b495b48e5"
     },
     "release/RELEASE_FREEZE_STATUS.md": {
       "bytes": 2693,
@@ -1252,7 +1256,7 @@
     },
     "submission/privacy_review.json": {
       "bytes": 409,
-      "sha256": "4fa92ee290ef47771d398a2d350f9aa900602cd8a386d61f6c887e9e178b997d"
+      "sha256": "163a4f9711825672a82297e93e4367319b7e035b9c22b31a581a0028c60f9e9b"
     },
     "submission/README.md": {
       "bytes": 847,
@@ -1327,7 +1331,7 @@
       "sha256": "ea3e6d0c41ef14f34e43b713b15b74f859833e469d649e0a1e3567e5e8e50ed9"
     }
   },
-  "content_sha256": "d1358abf312892c765e521eea83b0909cc1d26816de2099b7873dc1b40073543",
+  "content_sha256": "6aeb4d449b3803c3826c87e0f55972fb08191a4848999c20ea933e1bcf3dbde1",
   "seed": 211,
   "environment": {
     "python": "3.13.16",
