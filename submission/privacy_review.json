@@ -1,0 +1,12 @@
+{
+  "review_date": "2026-10-08",
+  "text_files_scanned": 295,
+  "confirmed_token_contact_hits": [],
+  "forbidden_credential_files": [],
+  "submission_rows": 2500,
+  "unique_ids": 2500,
+  "challenge_order_matches": true,
+  "review_flags": 300,
+  "data_scope": "Synthetic course data; not real customer records",
+  "limits": "Pattern review is not a guarantee against every possible secret format."
+}
