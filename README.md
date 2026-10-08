@@ -8,7 +8,7 @@ available at application time.
 
 **Course:** SDA-DSC-211 — Advanced Machine Learning Methods  
 **Project type:** Individual learner project  
-**Current stage:** Days 1–3 executed and evidence saved; Days 4–5 pending  
+**Current stage:** Days 1–4 executed and evidence saved; Day 5 pending  
 **Day 1 initial candidate:** XGBoost, provisional; Day 2 evaluates LightGBM protocols
 
 > This project uses synthetic course data. It must not be used to make
@@ -27,12 +27,14 @@ available at application time.
 - [Day 2 reflection | تفسير اليوم الثاني](artifacts/day2_reflection.json)
 - [Day 3 notebook | دفتر اليوم الثالث](notebooks/03_cost_sensitive_decision.ipynb)
 - [Decision Card | بطاقة القرار](reports/DECISION_CARD.md)
+- [Day 4 notebook | دفتر اليوم الرابع](notebooks/04_explain_calibrate.ipynb)
+- [Interpretability Report | تقرير التفسير والمعايرة](reports/INTERPRETABILITY_REPORT.md)
 - [Project progress | تقدم المشروع](#project-progress)
 
 <!-- BILINGUAL:AR -->
 
 مشروع تعليمي لتقدير احتمال التعثر خلال 90 يومًا باستخدام معلومات وقت تقديم الطلب.
-اكتملت دفاتر وأدلة الأيام الثلاثة الأولى، واليومان الرابع والخامس لم يكتملَا بعد. البيانات اصطناعية والنتائج لا تصلح
+اكتملت دفاتر وأدلة الأيام الأربعة الأولى؛ بقي اليوم الخامس والتسليم النهائي. نتيجة اليوم الرابع تحتاج مراجعة السعة. البيانات اصطناعية والنتائج لا تصلح
 لاتخاذ قرارات تمويل حقيقية. تُحفظ دفاتر الأيام وأدلتها في مستودع واحد، ثم يُنتج
 النموذج وواجهة التنبؤ النهائية في اليوم الخامس.
 
@@ -56,7 +58,7 @@ using evidence rather than model complexity or reputation.
 | Day 1 | Baseline and boosting comparison | Completed |
 | Day 2 | Customer-aware and time-aware validation; tuning | Completed |
 | Day 3 | Class imbalance and decision costs | Executed; evidence and Decision Card saved |
-| Day 4 | Interpretation and calibration | Planned |
+| Day 4 | Interpretation and calibration | Executed LIVE; report saved; capacity review required |
 | Day 5 | Ensembles, Model Card, and final delivery | Planned |
 
 ## Dataset and Prediction Task
@@ -333,7 +335,7 @@ cooperative search budget. FULL mode is optional. No paid service or Drive mount
 is required. This run used live search, not precomputed recovery results.
 
 `environment.json` is the latest exported environment record and is updated
-by Day 3; day-specific configurations remain in each day's run metadata.
+by Day 4; day-specific configurations remain in each day's run metadata.
 Course data revision: `fe0c0204e6076a7ac2139b7336485a097343fb8a`.
 Day 2 support revision: `1e1da4acbee8941bef07245b259fb6c27ced4ad7`.
 These course-tool revisions are not the learner's final submission commit SHA.
@@ -402,12 +404,126 @@ simplified, and future review capacity and outcomes may differ.
 
 ![Day 3 cost and capacity](artifacts/cost_curve.png)
 
+## Day 4 — Interpretation and Calibration | اليوم الرابع
+
+The notebook completed a LIVE free-CPU run with 80 weighted LightGBM trees,
+300 TreeSHAP requests, three permutation repeats and 200 paired customer-cluster
+bootstrap replicates. Setup verified pinned files and packages. No educational
+SHAP example or challenge data was used. All six reflection fields were filled;
+`TECHNICAL_READY | READY_FOR_REVIEW` records completion, not a grade or deployment approval.
+
+### Separate Data Roles
+
+Customers are separated across roles, newer roles are reserved first, and fit
+labels must mature strictly before 2023-07-01. Imputation and model fitting use
+fit only; sigmoid learns on calibration only, and threshold selection uses policy only.
+The model, calibrator and policy are frozen before evaluation.
+
+| Role | Requests | Customers | Defaults | Application period |
+|---|---:|---:|---:|---|
+| Fit | 2,516 | 1,853 | 217 | Jan 2022–Apr 2023 |
+| Calibration | 584 | 538 | 40 | Jul–Sep 2023 |
+| Policy | 589 | 566 | 55 | Jan–Mar 2024 |
+| Evaluation | 1,733 | 1,520 | 139 | Jul–Dec 2024 |
+
+The remaining 4,578 requests are excluded gaps or customer conflicts.
+Evaluation was exposed earlier in the course and is not a final untouched test.
+
+### Explanation Evidence
+
+Held-out permutation AP drops were 0.1270 for `bureau_score` (repeat SD 0.0235)
+and 0.0690 for `dti` (SD 0.0200), using all 1,733 evaluation requests. Region
+indicators were shuffled jointly. Repeat SD is not a confidence interval;
+correlated features can share signal.
+
+On the 300-request SHAP sample, these same features had mean absolute contributions
+of 0.9042 and 0.5437 **raw log-odds**, with training tree-path counts as background.
+The maximum additivity error was 5.70e-15. Base plus summed contributions equals
+the raw margin; sigmoid applies to the complete margin, not to separate contributions.
+SHAP describes the raw weighted model and does not establish causality or fairness.
+
+The highest raw-score sampled request, `TR-009585`, was selected without its outcome:
+raw score 0.903079 and calibrated probability 0.479518. Its three positive reasons
+were bureau score 497 (+2.269325), DTI 1.2806 (+1.198145), and financing amount
+93,437.29 (+0.200725 log-odds). None of these values was imputed. Bureau score ±1
+preserved the displayed probabilities and three reasons; this is a narrow local check.
+
+### Calibration and Stability
+
+| Metric on 1,733 evaluation requests (139 defaults) | Raw | Sigmoid |
+|---|---:|---:|
+| ROC-AUC | 0.770804 | 0.770804 |
+| Average Precision | 0.258677 | 0.258677 |
+| Brier score | 0.113027 | 0.067112 |
+| Log loss | 0.357993 | 0.246749 |
+| ECE, ten equal-width bins | 0.146871 | 0.022486 |
+
+The increasing sigmoid mapping preserved ranking while improving measured
+probability quality. ECE depends on bins and sample size, and sparse bins remain
+weak evidence; improvement does not prove perfect calibration.
+
+The 200 paired customer-cluster bootstrap replicates gave 95% percentile AP
+intervals [0.197442, 0.337854] for both variants and a Brier-change interval
+[-0.054177, -0.037409] (after minus before). Models remain fixed: these intervals
+exclude training/calibrator fitting uncertainty and future drift, and do not
+describe an individual's probability. Q3/Q4 AP was 0.27457/0.27050; quarter
+variation is descriptive, not independent cross-validation.
+
+### Review Capacity Finding
+
+The raw policy threshold `0.5881953696965011` was selected under 10×FN+FP and
+12% capacity on policy rows (68 flags, capacity 70, loss 387). Its transported
+calibrated threshold is `0.17331013263107387`, with a predeclared diagnostic
+band [0.15331013263107388, 0.19331013263107386]. This ±0.02 band is not a confidence interval.
+
+| Evaluation period | Requests | 12% capacity, floored | Risk flags | Near threshold | Union for review |
+|---|---:|---:|---:|---:|---:|
+| 2024Q3 | 836 | 100 | 97 | 23 | 109 |
+| 2024Q4 | 897 | 107 | 109 | 21 | 122 |
+
+`CAPACITY_REVIEW_REQUIRED` is the preserved finding. The union counts each request
+once and exceeds capacity by 9 and 15; Q4 risk flags alone exceed capacity by 2.
+The threshold and ceiling were not changed after evaluation. A revised policy
+requires new development and evaluation evidence.
+
+اكتمل تشغيل SHAP والمعايرة مباشرة على CPU. تحسّن Brier وECE على 1733 طلب تقييم،
+وبقي ترتيب النموذج كما هو. تجاوز اتحاد المراجعة السعة في الربعين؛ لذلك حفظنا
+`CAPACITY_REVIEW_REQUIRED` دون تعديل العتبة بعد مشاهدة التقييم. البيانات اصطناعية،
+والنتائج تفسير تعليمي وليست موافقة على تطبيق تمويلي حقيقي. صيغ التفسير بمساعدة
+ChatGPT/Codex استنادًا إلى هذا التشغيل، ويجب أن تراجع المتدربة فهمها قبل التسليم.
+
+### Day 4 Evidence
+
+- [Executed notebook](notebooks/04_explain_calibrate.ipynb)
+- [Interpretability Report](reports/INTERPRETABILITY_REPORT.md)
+- [Complete 28-file evidence bundle](artifacts/day4_artifacts.zip)
+- [Data roles](artifacts/day4_roles.csv), [prediction evidence](artifacts/day4_predictions.csv)
+- [Permutation results](artifacts/permutation_importance.csv), [complete SHAP arrays](artifacts/shap_values_sample.npz)
+- [Global SHAP](artifacts/day4_shap_global.csv), [SHAP metadata](artifacts/day4_shap_metadata.json)
+- [Local reasons](artifacts/day4_reason_codes.csv), [local perturbations](artifacts/day4_local_stability.csv)
+- [Calibration metrics and exact policy](artifacts/calibration_metrics.json), [reliability bins](artifacts/day4_reliability_bins.csv)
+- [Period metrics](artifacts/day4_period_metrics.csv), [bootstrap replicates](artifacts/day4_bootstrap.csv), [stability summary](artifacts/day4_stability_summary.json)
+- [Policy sweep](artifacts/day4_policy_sweep.csv), [review flags](artifacts/day4_review_flags.csv), [capacity audit](artifacts/day4_capacity.csv)
+- [Model text](artifacts/day4_model.txt), [provenance](artifacts/day4_provenance.json)
+- [Reflection](artifacts/day4_reflection.json), [run record](artifacts/day4_run.json), [environment](artifacts/environment.json)
+
+![Permutation importance](artifacts/permutation_importance.png)
+![Global SHAP in raw log-odds](artifacts/shap_beeswarm.png)
+![Local SHAP waterfall](artifacts/shap_waterfall.png)
+![Reliability and bin counts](artifacts/reliability_curve.png)
+![Customer-cluster stability](artifacts/stability_summary.png)
+![Review zone and period capacity](artifacts/review_zone.png)
+
+To reproduce, open the Day 4 notebook in a fresh free-CPU Colab session, keep
+FAST mode and live SHAP, run cells in order, review the new numbers, update the
+reflection, then rerun export. Preserve the artifacts/reports structure and
+save the executed notebook. Support revision: `4f6892d5c02923b5f8e3c78f4fcead73b043570f`.
+
 ## Remaining Work and Final Submission
 
-Days 4–5 will add interpretation, calibration and the final integrated
-model/inference interface. The Day 3 Decision Card has been saved. The
-Interpretability Report, Ensemble Decision, Model Card and five-slide PDF
-remain to be completed from live evidence. Final readiness requires clean notebook execution and Notebook 99
+Day 5 will add the final integrated model/inference interface. The Day 3
+Decision Card and Day 4 Interpretability Report are saved. The Ensemble Decision,
+Model Card and five-slide PDF remain to be completed from live evidence. Final readiness requires clean notebook execution and Notebook 99
 checks, consistent files/manifest, an exact final commit and immutable tag,
 and private submission through the cohort's approved channel. Daily readiness
 messages are not final grades or submission receipts.
@@ -469,4 +585,4 @@ This independent repository preserves the course folder structure and credits th
 <!-- BILINGUAL:AR -->
 هذا مستودع مستقل للمتدربة يحافظ على بنية مجلدات الدورة ويوثق مصدر الأكواد المعاد استخدامها. أُنشئ بناءً على توجيه الأستاذة الذي نقلته المتدربة. يبقى المستودع السابق سجلًا للمراحل الماضية. فحوص توليد إصدارات القالب ومطابقة الإجابات الفارغة لا تُشغّل بوصفها فحوص تقييم لهذا المستودع. تبقى فحوص البيئة والاختبارات والروابط والتوثيق باللغتين وأدوات فحص التسليم النهائي متاحة.
 
-**Current status:** Executed notebooks and evidence for Days 1–3 are saved, including the Day 3 artifacts and Decision Card. Days 4–5 and final delivery are not complete. Passing a workflow is not a grade or final-readiness certification.
+**Current status:** Executed notebooks and evidence for Days 1–4 are saved, including the Decision Card and Interpretability Report. Day 4 capacity review remains required. Day 5 and final delivery are not complete. Passing a workflow is not a grade or final-readiness certification.
