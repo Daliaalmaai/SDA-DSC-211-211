@@ -1,14 +1,29 @@
-# دفاتر تطبيقك
+# Project notebooks | دفاتر المشروع
 
-| الدفتر | ما تنجزه | افتحه |
-|---|---|---|
-| 00 — الاستعداد | البيئة والبيانات وستة أسئلة للمراجعة وحفظ المخرجات | [Colab](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/00_readiness_check.ipynb) · [GitHub](00_readiness_check.ipynb) |
-| 01 — خط الأساس والتعزيز | مقارنة ثلاثة نماذج، ومنحنيات، واختيار مرشح مع ثلاث ملاحظات | [Colab](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/01_baseline_boosting.ipynb) · [GitHub](01_baseline_boosting.ipynb) |
-| 02 — التحقق الصادق | تدقيق التسرب، تحقق الزمن والعملاء، بحث محدود وتفسير الفروق | [Colab](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/02_validation_tuning.ipynb) · [GitHub](02_validation_tuning.ipynb) |
-| 03 — العتبة والخسارة | أوزان الفئة وOOF وسعة المراجعة وبطاقة القرار | [Colab](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/03_cost_sensitive_decision.ipynb) · [GitHub](03_cost_sensitive_decision.ipynb) |
-| 04 — التفسير والمعايرة | SHAP ومعايرة منفصلة واستقرار وسعة المراجعة | [Colab](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/04_explain_calibrate.ipynb) · [GitHub](04_explain_calibrate.ipynb) |
-| 05 — التجميع والتسليم | مقارنة التجميع ونموذج محفوظ وبطاقة وحزمة موثقة | [Colab](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/05_final_model.ipynb) · [GitHub](05_final_model.ipynb) |
+<!-- BILINGUAL:EN -->
+## Main assessment notebook
 
-اقرأ [دليل الاستعداد](../READINESS_GUIDE.md). احفظ نسختك في هذا المجلد ومخرجاتك في `artifacts/`. اقرأ [دليل اليوم الأول](../DAY1_GUIDE.md) وابدأ التطبيق01. ثم [دليل اليوم الثاني](../DAY2_GUIDE.md) والتطبيق02. بعدهما [دليل اليوم الثالث](../DAY3_GUIDE.md) والتطبيق03. ثم [دليل اليوم الرابع](../DAY4_GUIDE.md) والتطبيق04. ثم [دليل اليوم الخامس](../DAY5_GUIDE.md) والتطبيق05 للتجميع والتسليم.
+[**FINAL_CODE_NOTEBOOK.ipynb**](FINAL_CODE_NOTEBOOK.ipynb) contains all project code, readiness, Days 1–5 and the final check, with saved execution outputs. This is the main entry point for reviewing the complete project.
 
-Open Notebook 00, 01, 02, 03, 04 or 05, use a free CPU runtime, and save your own copy and actual outputs.
+[Open the complete notebook in Colab](https://colab.research.google.com/github/Daliaalmaai/SDA-DSC-211-211/blob/main/notebooks/FINAL_CODE_NOTEBOOK.ipynb)
+
+<!-- BILINGUAL:AR -->
+## ملف التصحيح الرئيسي
+
+[**دفتر الأكواد الجامع**](FINAL_CODE_NOTEBOOK.ipynb) يجمع الأكواد والنتائج المنفذة لكل مراحل المشروع. احتفظت أيضًا بدفاتر الأيام منفصلة لتسهيل مراجعة كل مرحلة.
+
+## Individual notebooks | دفاتر المراحل
+
+| Notebook / الدفتر | Colab |
+|---|---|
+| [00_readiness_check.ipynb](00_readiness_check.ipynb) | [Open](https://colab.research.google.com/github/Daliaalmaai/SDA-DSC-211-211/blob/main/notebooks/00_readiness_check.ipynb) |
+| [01_baseline_boosting.ipynb](01_baseline_boosting.ipynb) | [Open](https://colab.research.google.com/github/Daliaalmaai/SDA-DSC-211-211/blob/main/notebooks/01_baseline_boosting.ipynb) |
+| [02_validation_tuning.ipynb](02_validation_tuning.ipynb) | [Open](https://colab.research.google.com/github/Daliaalmaai/SDA-DSC-211-211/blob/main/notebooks/02_validation_tuning.ipynb) |
+| [03_cost_sensitive_decision.ipynb](03_cost_sensitive_decision.ipynb) | [Open](https://colab.research.google.com/github/Daliaalmaai/SDA-DSC-211-211/blob/main/notebooks/03_cost_sensitive_decision.ipynb) |
+| [04_explain_calibrate.ipynb](04_explain_calibrate.ipynb) | [Open](https://colab.research.google.com/github/Daliaalmaai/SDA-DSC-211-211/blob/main/notebooks/04_explain_calibrate.ipynb) |
+| [05_final_model.ipynb](05_final_model.ipynb) | [Open](https://colab.research.google.com/github/Daliaalmaai/SDA-DSC-211-211/blob/main/notebooks/05_final_model.ipynb) |
+| [99_final_submission_check.ipynb](99_final_submission_check.ipynb) | [Open](https://colab.research.google.com/github/Daliaalmaai/SDA-DSC-211-211/blob/main/notebooks/99_final_submission_check.ipynb) |
+
+Use a fresh CPU runtime and **Runtime → Run all**. Download the executed notebook and evidence before ending the temporary session.
+
+أستخدم جلسة CPU جديدة وأشغّل جميع الخلايا، ثم أنزّل الدفتر والملفات الناتجة قبل انتهاء الجلسة المؤقتة.
