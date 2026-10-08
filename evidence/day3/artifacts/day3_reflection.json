@@ -1,0 +1,16 @@
+{
+  "source": "LIVE",
+  "responses": {
+    "threshold_reason": "I selected the threshold of approximately 0.6583 because it minimized observed OOF loss among thresholds satisfying the 12% review capacity in every validation period. It flagged 526 requests with a loss of 2639 educational units. The exact threshold is preserved in the export.",
+    "cost_capacity_tradeoff": "At threshold 0.5, the model flagged 1005 requests with loss 2403, but exceeded capacity. The constrained threshold reduced flags to 526 while increasing loss by 236 units and reducing recall from 57.81% to 40.89%. Period flags were 137/195, 183/200 and 206/207 of capacity. The displayed threshold and flag count remained unchanged for FN costs of 8, 10 and 12, with FP cost fixed at 1.",
+    "regional_gap": "Regional false-positive rates were approximately 8.09% for central, 8.29% for western, 7.72% for eastern and 7.64% for other. The maximum-minus-minimum gap was approximately 0.648 percentage points. All regions exceeded the low-support cutoff. These descriptive results require review of group outcomes and denominators; the small gap does not establish fairness or statistical significance.",
+    "limitations": "The data are synthetic. Threshold selection and loss estimation use the same development OOF labels, so this is not an independent final test. OOF covers 5039 requests, representing 50.39% of all training rows and 100% of eligible rows; 4961 warm-up rows have no OOF predictions. Weighted scores are not established as calibrated probabilities. The simplified loss policy omits review cost and effectiveness. Historical capacity compliance and unchanged decisions in the tested cost scenarios do not guarantee future performance or capacity.",
+    "why_accuracy_misleads": "Only approximately 7.62% of the eligible requests defaulted. Flagging nobody achieved 92.38% accuracy but zero recall, missing all 384 defaults and producing loss of 3840 units. Accuracy alone therefore hides failure to identify the minority class. I also consider AP, recall, precision, loss and capacity.",
+    "why_oof": "Each OOF score comes from a model that did not train on that request. The forward folds also exclude validation customers from training and require training labels to mature before validation begins. This reduces leakage and training optimism. Challenge data remain closed. However, choosing the threshold using OOF labels still makes these development results rather than an independent final evaluation."
+  },
+  "checkpoint": {
+    "status": "READY_FOR_REVIEW",
+    "missing": [],
+    "automatic_grade": null
+  }
+}
