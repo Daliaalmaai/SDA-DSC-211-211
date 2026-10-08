@@ -1,3 +1,32 @@
+<!-- SIMPLIFIED_SUBMISSION_OVERVIEW -->
+# Tamweel Lite — SDA-DSC-211
+
+**Student account:** Daliaalmaai. **Student code:** 211. The official code supplied by the learner is 211; the repository is named SDA-DSC-211-211.
+
+## Assessment entry point | ملف الأكواد الجامع
+
+[FINAL_CODE_NOTEBOOK.ipynb](FINAL_CODE_NOTEBOOK.ipynb) assembles readiness, Days 1–5 and the final technical check. The separate daily notebooks retain their individual results. Use a fresh free CPU Colab session and **Runtime → Run all**; download the executed `.ipynb` and upload it manually. No Drive mount or GitHub authorization is required.
+
+## Project and results | الفكرة والنتائج
+
+Tamweel Lite estimates synthetic 90-day default risk to prioritize educational human review. It compares Logistic Regression, XGBoost and LightGBM; uses time-ordered customer-separated validation, Optuna, class weighting/oversampling, cost and capacity policies, permutation importance, SHAP, calibration, averaging and stacking. Tools: Python, pandas, NumPy, scikit-learn, LightGBM, XGBoost, Optuna, SHAP and matplotlib; pinned versions are in `requirements-colab.txt`, `constraints.txt` and `artifacts/environment.json`.
+
+The final choice is **KEEP SINGLE: Logistic Regression**. Its Day 5 mean outer-fold AP is **0.39166**, versus **0.38942** for learned weighted averaging; the ensemble acceptance rule was not met. These are development results, not challenge test performance.
+
+The raw OOF decision threshold is **0.16892161427109176**, transported through the fitted sigmoid to **0.12225843144286948**. The policy uses **10 × FN + FP** and a **12% batch capacity**. The unlabelled challenge contains 2,500 requests: 330 exceed the threshold and the full-batch cap retains 300 review flags. A review flag is not an automatic credit rejection.
+
+Limitations: synthetic data; three related temporal folds; threshold/model selection uses development OOF; challenge labels are unavailable; calibration fit Brier/ECE worsened and do not establish independent benefit; regional gaps are descriptive and do not certify fairness. Day 4 SHAP explains its LightGBM model, not the final Logistic model. The Day 4 capacity-band finding is retained transparently; the final Day 5 batch policy applies its own cap.
+
+## Required submission files | ملفات التسليم
+
+- [Readiness](notebooks/00_readiness_check.ipynb), [Day 1](notebooks/01_baseline_boosting.ipynb), [Day 2](notebooks/02_validation_tuning.ipynb), [Day 3](notebooks/03_cost_sensitive_decision.ipynb), [Day 4](notebooks/04_explain_calibrate.ipynb), [Day 5](notebooks/05_final_model.ipynb), [Final check](notebooks/99_final_submission_check.ipynb).
+- [Decision Card](reports/DECISION_CARD.md), [Interpretability Report](reports/INTERPRETABILITY_REPORT.md), [Model Card](reports/MODEL_CARD.md), [Ensemble Decision](reports/ENSEMBLE_DECISION.md).
+- [submission.csv](submission/submission.csv), [five-slide final presentation PDF](presentation/final_presentation.pdf), [portable inference](tamweel/inference.py).
+
+The instructor's simplified notice permits clear folders and requires one public repository. It does not require a template, tag or commit SHA. Historical tags remain as reproducibility references. Technical checks are evidence of execution, not an automatic grade; the written reasoning and oral defence require human assessment. Data are synthetic; no private customer data or credentials are needed.
+
+---
+
 <!-- BILINGUAL:EN -->
 
 # Tamweel Lite — Financing Default Risk
@@ -34,7 +63,7 @@ available at application time.
 <!-- BILINGUAL:AR -->
 
 مشروع تعليمي لتقدير احتمال التعثر خلال 90 يومًا باستخدام معلومات وقت تقديم الطلب.
-اكتملت دفاتر وأدلة الأيام الخمسة، والنموذج النهائي وملف التنبؤات والعرض. الفحص النهائي قيد التنفيذ. نتيجة اليوم الرابع تحتاج مراجعة السعة. البيانات اصطناعية والنتائج لا تصلح
+اكتملت دفاتر وأدلة الأيام الخمسة، والنموذج النهائي وملف التنبؤات والعرض. اجتازت النسخة السابقة الفحص التقني الكامل، ويُعاد فحص النسخة المحدثة. نتيجة اليوم الرابع تحتاج مراجعة السعة. البيانات اصطناعية والنتائج لا تصلح
 لاتخاذ قرارات تمويل حقيقية. تُحفظ دفاتر الأيام وأدلتها في مستودع واحد، ثم يُنتج
 النموذج وواجهة التنبؤ النهائية في اليوم الخامس.
 
@@ -522,8 +551,8 @@ save the executed notebook. Support revision: `4f6892d5c02923b5f8e3c78f4fcead73b
 ## Remaining Work and Final Submission
 
 Day 5 produced the final Logistic Regression model, inference interface, frozen policy, model card, ensemble decision, challenge predictions and five-slide PDF from live evidence. Final readiness requires clean notebook execution and Notebook 99
-checks, consistent files/manifest, an exact final commit and immutable tag,
-and private submission through the cohort's approved channel. Daily readiness
+checks and consistent files/manifest,
+and private submission through the cohort's approved channel. Tags and commit SHA are optional under the instructor's simplified submission notice. Daily readiness
 messages are not final grades or submission receipts.
 
 
