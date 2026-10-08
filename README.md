@@ -5,7 +5,7 @@
 
 ## Assessment entry point | ملف الأكواد الجامع
 
-[FINAL_CODE_NOTEBOOK.ipynb](FINAL_CODE_NOTEBOOK.ipynb) assembles readiness, Days 1–5 and the final technical check. The separate daily notebooks retain their individual results. Use a fresh free CPU Colab session and **Runtime → Run all**; download the executed `.ipynb` and upload it manually. No Drive mount or GitHub authorization is required.
+[**FINAL_CODE_NOTEBOOK.ipynb — main assessment notebook**](notebooks/FINAL_CODE_NOTEBOOK.ipynb) assembles readiness, Days 1–5 and the final technical check. The separate daily notebooks retain their individual results. Use a fresh free CPU Colab session and **Runtime → Run all**; download the executed `.ipynb` and upload it manually. No Drive mount or GitHub authorization is required.
 
 ## Project and results | الفكرة والنتائج
 
@@ -16,6 +16,48 @@ I selected **Logistic Regression** as my final model. Its Day 5 mean outer-fold 
 The raw OOF decision threshold is **0.16892161427109176**, transported through the fitted sigmoid to **0.12225843144286948**. The policy uses **10 × FN + FP** and a **12% batch capacity**. The unlabelled challenge contains 2,500 requests: 330 exceed the threshold and the full-batch cap retains 300 review flags. A review flag is not an automatic credit rejection.
 
 Limitations: synthetic data; three related temporal folds; threshold/model selection uses development OOF; challenge labels are unavailable; calibration fit Brier/ECE worsened and do not establish independent benefit; regional gaps are descriptive and do not certify fairness. Day 4 SHAP explains its LightGBM model, not the final Logistic model. The Day 4 capacity-band finding is retained transparently; the final Day 5 batch policy applies its own cap.
+
+## Start here | ابدأ من هنا
+
+| Purpose | File |
+|---|---|
+| All code and saved outputs | [Final code notebook](notebooks/FINAL_CODE_NOTEBOOK.ipynb) |
+| Individual lab notebooks | [Notebook index](notebooks/README.md) |
+| Final model and limitations | [Model Card](reports/MODEL_CARD.md) |
+| Ensemble comparison and final selection | [Ensemble Decision](reports/ENSEMBLE_DECISION.md) |
+| Review threshold, costs and capacity | [Decision Card](reports/DECISION_CARD.md) |
+| Explanation and calibration | [Interpretability Report](reports/INTERPRETABILITY_REPORT.md) |
+| Challenge predictions | [submission.csv](submission/submission.csv) |
+| Five-slide presentation | [Final presentation PDF](presentation/final_presentation.pdf) |
+
+### Run the complete project | تشغيل المشروع كاملًا
+
+1. Open [the final code notebook in Google Colab](https://colab.research.google.com/github/Daliaalmaai/SDA-DSC-211-211/blob/main/notebooks/FINAL_CODE_NOTEBOOK.ipynb).
+2. Select a fresh **CPU** runtime, then choose **Runtime → Run all**. Setup retrieves pinned project files and verifies their hashes. The complete run includes readiness, the five labs and the final check.
+3. Read the outputs and interpretations. The saved complete notebook contains **60 executed code cells with no error outputs**.
+4. Choose **File → Download → Download .ipynb**, and download the generated evidence bundles before ending the temporary session.
+
+جمعت الأكواد والنتائج في دفتر واحد لتسهيل مراجعة المشروع من البداية إلى النهاية. أبدأ بفحص البيئة والبيانات، ثم مقارنة النماذج، والتحقق الزمني، وسياسة القرار، والتفسير والمعايرة، وأخيرًا النموذج النهائي وفحص التسليم. أبقيت دفاتر الأيام منفصلة أيضًا لسهولة مراجعة تفاصيل كل مرحلة.
+
+The complete notebook uses a pinned project snapshot for reproducibility. Its root-level [copy](FINAL_CODE_NOTEBOOK.ipynb) is identical to the copy in `notebooks/`.
+
+### Project workflow | مسار المشروع
+
+| Stage | Main question | Evidence |
+|---|---|---|
+| Readiness | Can I reproduce the environment and inspect the data? | Environment and data checks |
+| Day 1 | How do baseline and boosting models compare? | Comparison, learning curves and initial choice |
+| Day 2 | Does performance survive leakage removal and honest validation? | Leakage audit, temporal folds, Optuna search and OOF coverage |
+| Day 3 | Which threshold balances costs and review capacity? | Cost sweep, period capacity and regional audit |
+| Day 4 | What drives the model and how reliable are its scores? | Permutation importance, SHAP, calibration and stability |
+| Day 5 | Does an ensemble justify replacing a single model? | Common-fold comparison, model artifact and predictions |
+| Final check | Are technical deliverables present and reproducible? | Executed Notebook 99 and submission evidence |
+
+### Reading the results | قراءة النتائج
+
+**Average precision (AP)** summarizes precision–recall ranking; **ROC-AUC** summarizes discrimination. **Recall** measures the share of defaults flagged, while **precision** measures the share of flagged requests that default. **Brier score** and **ECE** assess probability reliability. My loss policy gives a missed default ten times the cost of a false flag. Ranking quality alone does not establish a better decision under limited review capacity.
+
+I distinguish fold means from pooled OOF scores, and development selection from an independent test. Day 1 uses an initial random split; Day 2 adds time, customer and label-maturity boundaries. Day 4 explains its LightGBM model; Day 5 selects the final model using its own comparison. Challenge labels are unavailable, so I report predictions and capacity compliance without claiming challenge accuracy.
 
 ## Required submission files | ملفات التسليم
 
@@ -29,7 +71,7 @@ The instructor's simplified notice permits clear folders and requires one public
 
 <!-- BILINGUAL:EN -->
 
-# Tamweel Lite — Financing Default Risk
+## Detailed methodology and evidence
 
 An educational machine learning project for estimating the probability
 of default within 90 days after a financing application, using information
@@ -547,7 +589,7 @@ FAST mode and live SHAP, run cells in order, review the new numbers, update the
 reflection, then rerun export. Preserve the artifacts/reports structure and
 save the executed notebook. Support revision: `4f6892d5c02923b5f8e3c78f4fcead73b043570f`.
 
-## Remaining Work and Final Submission
+## Reproducibility and Final Submission
 
 Day 5 produced the final Logistic Regression model, inference interface, frozen policy, model card, ensemble decision, challenge predictions and five-slide PDF from live evidence. Final readiness requires clean notebook execution and Notebook 99
 checks and consistent files/manifest,
