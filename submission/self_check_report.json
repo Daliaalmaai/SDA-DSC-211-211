@@ -1,0 +1,708 @@
+{
+  "status": "READY FOR FINAL SUBMISSION | جاهز للتسليم النهائي",
+  "ready_for_submission": true,
+  "automatic_grade": null,
+  "checks": [
+    {
+      "check": "safe_files",
+      "status": "PASS",
+      "file": ".",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "data_contract",
+      "status": "PASS",
+      "file": "data/",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "README.md",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "PROJECT_README.md",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "requirements-colab.txt",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "constraints.txt",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "data/data_contract.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "data/data_manifest.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "data/tamweel_train.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "data/tamweel_challenge.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "tamweel/__init__.py",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "tamweel/inference.py",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "scripts/inference.py",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "scripts/rebuild_final.py",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "submission/submission.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/final_model/model.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/final_model/model_manifest.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/day5_run.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/environment.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/day5_reflection.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/day5_oof_predictions.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/day5_fold_scores.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/ensemble_comparison.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/final_metrics.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/final_policy.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/day5_oof_provenance.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/day5_final_provenance.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/day5_ensemble_gate.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/day5_diversity.png",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/day5_ensemble_comparison.png",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/day5_policy_regions.png",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/day5_calibration_fit.png",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "artifacts/day5_challenge_capacity.png",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "reports/MODEL_CARD.md",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "reports/ENSEMBLE_DECISION.md",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "presentation/final_presentation.pdf",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "notebooks/01_baseline_boosting.ipynb",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "notebooks/02_validation_tuning.ipynb",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "notebooks/03_cost_sensitive_decision.ipynb",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "notebooks/04_explain_calibrate.ipynb",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "required_file",
+      "status": "PASS",
+      "file": "notebooks/05_final_model.ipynb",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day1/day1_model_comparison.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day1/day1_comparison_predictions.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day1/day1_split_membership.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day1/day1_learning_curves.png",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day1/day1_roc_pr.png",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day1/day1_reflection.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day1/day1_run.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day1/environment.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "learner_answers",
+      "status": "PASS",
+      "file": "evidence/day1/",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "live_execution",
+      "status": "PASS",
+      "file": "evidence/day1/",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day2/validation_summary.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day2/leakage_audit.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day2/fold_audit.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day2/optuna_results.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day2/best_params.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day2/day2_validation_comparison.png",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day2/day2_reflection.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day2/day2_run.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day2/environment.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "learner_answers",
+      "status": "PASS",
+      "file": "evidence/day2/",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "live_execution",
+      "status": "PASS",
+      "file": "evidence/day2/",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day3/threshold_metrics.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day3/threshold_sweep.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day3/day3_oof_predictions.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day3/day3_region_audit.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day3/cost_curve.png",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day3/DECISION_CARD.md",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day3/day3_reflection.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day3/day3_run.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day3/environment.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "learner_answers",
+      "status": "PASS",
+      "file": "evidence/day3/",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "live_execution",
+      "status": "PASS",
+      "file": "evidence/day3/",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day4/calibration_metrics.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day4/permutation_importance.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day4/day4_shap_metadata.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day4/day4_stability_summary.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day4/shap_beeswarm.png",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day4/shap_waterfall.png",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day4/reliability_curve.png",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day4/INTERPRETABILITY_REPORT.md",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day4/day4_reflection.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day4/day4_run.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "daily_evidence",
+      "status": "PASS",
+      "file": "evidence/day4/environment.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "learner_answers",
+      "status": "PASS",
+      "file": "evidence/day4/",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "live_execution",
+      "status": "PASS",
+      "file": "evidence/day4/",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "learner_answers",
+      "status": "PASS",
+      "file": "artifacts/day5_reflection.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "live_execution",
+      "status": "PASS",
+      "file": "artifacts/day5_run.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "executed_notebook",
+      "status": "PASS",
+      "file": "notebooks/01_baseline_boosting.ipynb",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "executed_notebook",
+      "status": "PASS",
+      "file": "notebooks/02_validation_tuning.ipynb",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "executed_notebook",
+      "status": "PASS",
+      "file": "notebooks/03_cost_sensitive_decision.ipynb",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "executed_notebook",
+      "status": "PASS",
+      "file": "notebooks/04_explain_calibrate.ipynb",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "executed_notebook",
+      "status": "PASS",
+      "file": "notebooks/05_final_model.ipynb",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "written_report",
+      "status": "PASS",
+      "file": "PROJECT_README.md",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "written_report",
+      "status": "PASS",
+      "file": "reports/MODEL_CARD.md",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "written_report",
+      "status": "PASS",
+      "file": "reports/ENSEMBLE_DECISION.md",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "presentation",
+      "status": "PASS",
+      "file": "presentation/final_presentation.pdf",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "predictions_and_policy",
+      "status": "PASS",
+      "file": "submission/submission.csv",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "final_manifest",
+      "status": "PASS",
+      "file": "submission/final_project_manifest.json",
+      "how_to_fix": "",
+      "detail": ""
+    },
+    {
+      "check": "fresh_execution",
+      "status": "PASS",
+      "file": "notebooks/",
+      "how_to_fix": "",
+      "detail": ""
+    }
+  ],
+  "meaning": "Mechanical readiness only. The instructor reviews reasoning, authorship, exact SHA/tag and the presentation."
+}
